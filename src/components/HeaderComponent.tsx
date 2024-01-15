@@ -1,13 +1,14 @@
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import organization from "../assets/organization.svg";
-export function Header() {
+
+export function HeaderComponent() {
   return (
     <header>
       <nav className="border-gray-200 px-4 lg:px-6 py-2.5 bg-darkThemeColor rounded-lg">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <div className="flex">
-            <a href="https://flowbite.com" className="flex items-center mr-10">
+            <a href="#" className="flex items-center mr-10">
               <span className="self-center text-xl font-semibold whitespace-nowrap text-white">
                 BitTest
               </span>

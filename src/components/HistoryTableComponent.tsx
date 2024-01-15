@@ -1,6 +1,4 @@
 import {
-  ColumnFiltersState,
-  SortingState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
@@ -8,9 +6,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import * as React from "react";
 
-import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -19,45 +15,21 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { columnData, columns } from "./columns";
+import { customerColumns, historyColumns } from "./data-table/columns";
+import { historyColumnData } from "./data-table/mock-data";
 
-export function DataTable() {
-  const [sorting, setSorting] = React.useState<SortingState>([]);
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  );
-
-  const [rowSelection, setRowSelection] = React.useState({});
-
+export function HistoryTableComponent() {
   const table = useReactTable({
-    data: columnData,
-    columns: columns,
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
+    data: historyColumnData,
+    columns: historyColumns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
-    onRowSelectionChange: setRowSelection,
-    state: {
-      sorting,
-      columnFilters,
-      rowSelection,
-    },
   });
 
   return (
-    <div className="w-full px-4">
-      <div className="flex items-center py-6">
-        <Input
-          placeholder="Поиск по emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
-          }
-          className="bg-[#121825] text-white"
-        />
-      </div>
+    <div className="w-full overflow-auto">
       <div className="rounded-md border">
         <Table>
           <TableHeader className="bg-[#0E0C15]">
@@ -98,8 +70,8 @@ export function DataTable() {
             ) : (
               <TableRow>
                 <TableCell
-                  colSpan={columns.length}
-                  className="h-24 text-center"
+                  colSpan={customerColumns.length}
+                  className="h-24 text-center text-white"
                 >
                   No results.
                 </TableCell>

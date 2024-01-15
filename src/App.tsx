@@ -1,11 +1,11 @@
-import { Header } from "./components/Header";
-import { Main } from "./components/Main";
+import { HeaderComponent } from "./components/HeaderComponent";
+import { MainComponent } from "./components/MainComponent";
 
 export function App() {
   return (
     <div className="bg-[#0E0C15] w-full p-2">
-      <Header />
-      <Main />
+      <HeaderComponent />
+      <MainComponent />
     </div>
   );
 }
