@@ -1,12 +1,20 @@
-import { SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import {
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { ChartComponent } from "./ChartComponent";
 import { HistoryTableComponent } from "./HistoryTableComponent";
 
 export function SideBarComponent({ value }: { value: any }) {
   return (
-    <SheetContent className="bg-[#121825] text-white">
+    <SheetContent className="bg-[#121825] text-white overflow-scroll">
       <SheetHeader>
-        <SheetTitle className="text-white text-xl mb-8">{value}</SheetTitle>
+        <SheetTitle className="text-white text-xl mb-4">{value}</SheetTitle>
+        <SheetDescription className="text-white text-xl pb-8">
+          Использование токенов
+        </SheetDescription>
       </SheetHeader>
       <div>
         <ChartComponent />
